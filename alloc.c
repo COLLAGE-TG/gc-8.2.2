@@ -644,12 +644,12 @@ GC_INNER GC_bool GC_try_to_collect_inner(GC_stop_func stop_func)
         GET_TIME(current_time);
         time_diff = MS_TIME_DIFF(current_time, start_time);
         ns_frac_diff = NS_FRAC_TIME_DIFF(current_time, start_time);
-        // taigacode //
-        printf("thank you god\n");
-        // taigacode //
         if (measure_performance) {
           full_gc_total_time += time_diff; /* may wrap */
           full_gc_total_ns_frac += (unsigned)ns_frac_diff;
+          // taigacode //
+          printf("gc_time = %lu ms %lu ns\n",time_diff, ns_frac_diff);
+          // taigacode //
           if (full_gc_total_ns_frac >= 1000000U) {
             /* Overflow of the nanoseconds part. */
             full_gc_total_ns_frac -= 1000000U;
@@ -1147,7 +1147,7 @@ STATIC void GC_finish_collection(void)
 #   endif
     if (GC_on_collection_event)
       GC_on_collection_event(GC_EVENT_RECLAIM_START);
-
+      
 #   ifndef GC_GET_HEAP_USAGE_NOT_NEEDED
       if (GC_bytes_found > 0)
         GC_reclaimed_bytes_before_gc += (word)GC_bytes_found;
