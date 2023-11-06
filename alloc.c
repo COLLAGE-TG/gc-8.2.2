@@ -19,6 +19,7 @@
 #include "private/gc_priv.h"
 
 #include <stdio.h>
+#include <time.h>
 #if !defined(MACOS) && !defined(MSWINCE)
 # include <signal.h>
 # if !defined(GC_NO_TYPES) && !defined(SN_TARGET_PSP2) \
@@ -67,6 +68,10 @@
 word GC_non_gc_bytes = 0;  /* Number of bytes not intended to be collected */
 
 word GC_gc_no = 0;
+
+// Variables added by taiga
+CLOCK_TYPE t_prev_gc; // 一つ前のGCが終了した時間を格納
+// 
 
 #ifndef NO_CLOCK
   static unsigned long full_gc_total_time = 0; /* in ms, may wrap */
@@ -647,9 +652,6 @@ GC_INNER GC_bool GC_try_to_collect_inner(GC_stop_func stop_func)
         if (measure_performance) {
           full_gc_total_time += time_diff; /* may wrap */
           full_gc_total_ns_frac += (unsigned)ns_frac_diff;
-          // taigacode //
-          printf("gc_time = %lu ms %lu ns\n",time_diff, ns_frac_diff);
-          // taigacode //
           if (full_gc_total_ns_frac >= 1000000U) {
             /* Overflow of the nanoseconds part. */
             full_gc_total_ns_frac -= 1000000U;
@@ -814,15 +816,37 @@ GC_API int GC_CALL GC_collect_a_little(void)
 # define COMMA_IF_USE_MUNMAP(x) /* empty */
 #endif
 
+// try taiga code
+STATIC void signal_gc_start() {
+  int gc_start = 0;
+  gc_start = 1;
+  printf("this is signal of start GC\n");
+}
+// try taiga code
+
 /*
  * We stop the world and mark from all roots.
  * If stop_func() ever returns TRUE, we may fail and return FALSE.
  * Increment GC_gc_no if we succeed.
- */
+*/
+
 STATIC GC_bool GC_stopped_mark(GC_stop_func stop_func)
 {
     int i;
 #   ifndef NO_CLOCK
+      // --- Code added by Taiga
+      if (GC_PRINT_STATS_FLAG) {
+        if(GC_gc_no!=0) { // 初回はスキップ
+          CLOCK_TYPE cur_time_for_between;
+          GET_TIME(cur_time_for_between);
+          unsigned long time_diff_for_between, nsec_diff_for_between;
+
+          time_diff_for_between = MS_TIME_DIFF(cur_time_for_between,t_prev_gc);
+          nsec_diff_for_between = NS_FRAC_TIME_DIFF(cur_time_for_between,t_prev_gc);
+          printf("Time since the previous GC : %lu ms %lu ns\n", time_diff_for_between, nsec_diff_for_between);
+        }
+      }
+      // ---
       CLOCK_TYPE start_time = CLOCK_TYPE_INITIALIZER;
 #   endif
 
@@ -846,6 +870,9 @@ STATIC GC_bool GC_stopped_mark(GC_stop_func stop_func)
       if (GC_on_collection_event)
         GC_on_collection_event(GC_EVENT_PRE_STOP_WORLD);
 #   endif
+    // taiga
+    signal_gc_start();
+    // taiga
     STOP_WORLD();
 #   ifdef THREADS
       if (GC_on_collection_event)
@@ -946,7 +973,6 @@ STATIC GC_bool GC_stopped_mark(GC_stop_func stop_func)
 #   endif
 
     START_WORLD();
-
 #   ifdef THREADS
       if (GC_on_collection_event)
         GC_on_collection_event(GC_EVENT_POST_START_WORLD);
@@ -980,6 +1006,10 @@ STATIC GC_bool GC_stopped_mark(GC_stop_func stop_func)
                       " (%u ms in average)\n",
                       time_diff, NS_FRAC_TIME_DIFF(current_time, start_time),
                       total_time / divisor);
+
+        // --- code added by Taiga
+        GET_TIME(t_prev_gc); //前のGCが終わった時間を記録
+        // ---
       }
 #   endif
     return(TRUE);
@@ -1147,7 +1177,7 @@ STATIC void GC_finish_collection(void)
 #   endif
     if (GC_on_collection_event)
       GC_on_collection_event(GC_EVENT_RECLAIM_START);
-      
+
 #   ifndef GC_GET_HEAP_USAGE_NOT_NEEDED
       if (GC_bytes_found > 0)
         GC_reclaimed_bytes_before_gc += (word)GC_bytes_found;

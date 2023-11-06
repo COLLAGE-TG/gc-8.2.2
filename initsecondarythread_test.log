@@ -1,1 +1,18 @@
+Grow heap to 64 KiB after 0 bytes allocated
+Grew heap sections array to 32 elements
+Number of processors: 27
+Will retry suspend and restart signals if necessary
+Initiating full world-stop collection!
+
+--> Marking for collection #1 after 0 allocated bytes
+GC #1 freed 0 bytes, heap 64 KiB (+ 0 KiB unmapped + 192 KiB internal)
+World-stopped marking took 2 ms 311327 ns (2 ms in average)
+In-use heap: 0% (0 KiB pointers + 0 KiB other)
+0 finalization entries; 0/0 short/long disappearing links alive
+0 finalization-ready objects; 0/0 short/long links cleared
+Finalize and initiate sweep took 0 ms 404 ns + 1 ms 722302 ns
+Complete collection took 4 ms 49239 ns
+Adding block map for size of 8 granules (128 bytes)
+Adding block map for size of 0 granules (0 bytes)
+this is signal of start GC
 PASS initsecondarythread_test (exit status: 0)
