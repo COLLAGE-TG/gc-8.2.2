@@ -930,7 +930,7 @@ GC_allochblk_nth(size_t sz, int kind, unsigned flags, int n, int may_split)
  * Coalesce the block with its neighbors if possible.
  *
  * All mark words are assumed to be cleared.
- */
+*/
 GC_INNER void GC_freehblk(struct hblk *hbp)
 {
     struct hblk *next, *prev;

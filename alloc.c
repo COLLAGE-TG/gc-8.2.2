@@ -817,11 +817,11 @@ GC_API int GC_CALL GC_collect_a_little(void)
 #endif
 
 // try taiga code
-STATIC void signal_gc_start() {
-  int gc_start = 0;
-  gc_start = 1;
-  printf("this is signal of start GC\n");
-}
+// STATIC void signal_gc_start() {
+//   int gc_start = 0;
+//   gc_start = 1;
+//   printf("this is signal of start GC\n");
+// }
 // try taiga code
 
 /*
@@ -835,6 +835,7 @@ STATIC GC_bool GC_stopped_mark(GC_stop_func stop_func)
     int i;
 #   ifndef NO_CLOCK
       // --- Code added by Taiga
+      printf("GC_stopped_mark start(alloc.c)\n");
       if (GC_PRINT_STATS_FLAG) {
         if(GC_gc_no!=0) { // 初回はスキップ
           CLOCK_TYPE cur_time_for_between;
@@ -870,8 +871,9 @@ STATIC GC_bool GC_stopped_mark(GC_stop_func stop_func)
       if (GC_on_collection_event)
         GC_on_collection_event(GC_EVENT_PRE_STOP_WORLD);
 #   endif
-    // taiga
-    signal_gc_start();
+    // taiga 
+    // sigbak_gc_startをGCの開始としてpinに認識させればさらにいい精度でGC時間を測れる。
+    // signal_gc_start();
     // taiga
     STOP_WORLD();
 #   ifdef THREADS
@@ -1009,6 +1011,9 @@ STATIC GC_bool GC_stopped_mark(GC_stop_func stop_func)
 
         // --- code added by Taiga
         GET_TIME(t_prev_gc); //前のGCが終わった時間を記録
+        // --- Code added by Taiga
+        printf("GC_stopped_mark end(alloc.c)\n");
+        // --- Code added by Taiga
         // ---
       }
 #   endif
