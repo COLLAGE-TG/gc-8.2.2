@@ -6,183 +6,183 @@ Initiating full world-stop collection!
 
 --> Marking for collection #1 after 0 allocated bytes
 GC #1 freed 0 bytes, heap 64 KiB (+ 0 KiB unmapped + 256 KiB internal)
-World-stopped marking took 1 ms 846109 ns (1 ms in average)
+World-stopped marking took 0 ms 58124 ns (0 ms in average)
 In-use heap: 0% (0 KiB pointers + 0 KiB other)
 0 finalization entries; 0/0 short/long disappearing links alive
 0 finalization-ready objects; 0/0 short/long links cleared
-Finalize and initiate sweep took 0 ms 446 ns + 1 ms 753084 ns
-Complete collection took 7 ms 794150 ns
+Finalize and initiate sweep took 0 ms 673 ns + 0 ms 9936 ns
+Complete collection took 4 ms 151999 ns
 Adding block map for size of 84 granules (1344 bytes)
 Using soft-dirty bit feature
 Initiating full world-stop collection!
 
 --> Marking for collection #2 after 1344 allocated bytes
 GC #2 freed 0 bytes, heap 64 KiB (+ 0 KiB unmapped + 256 KiB internal)
-World-stopped marking took 0 ms 49723 ns (0 ms in average)
+World-stopped marking took 0 ms 43250 ns (0 ms in average)
 In-use heap: 2% (0 KiB pointers + 1 KiB other)
 0 finalization entries; 0/0 short/long disappearing links alive
 0 finalization-ready objects; 0/0 short/long links cleared
-Finalize and initiate sweep took 0 ms 218 ns + 0 ms 11613 ns
-Complete collection took 0 ms 90706 ns
+Finalize and initiate sweep took 0 ms 145 ns + 0 ms 6368 ns
+Complete collection took 0 ms 70370 ns
 Adding block map for size of 128 granules (2048 bytes)
 Started 15 mark helper threads
 Adding block map for size of 3 granules (48 bytes)
 Adding block map for size of 1 granules (16 bytes)
 
---> Marking for collection #3 after 59008 allocated bytes
+--> Marking for collection #3 after 55216 allocated bytes
 Marked from 8 dirty pages
 GC #3 freed 0 bytes, heap 64 KiB (+ 0 KiB unmapped + 384 KiB internal)
-World-stopped marking took 4 ms 9406 ns (1 ms in average)
-In-use heap: 91% (56 KiB pointers + 3 KiB other)
+World-stopped marking took 4 ms 274357 ns (1 ms in average)
+In-use heap: 83% (51 KiB pointers + 3 KiB other)
 0 finalization entries; 0/0 short/long disappearing links alive
 0 finalization-ready objects; 0/0 short/long links cleared
-Finalize and initiate sweep took 0 ms 689 ns + 0 ms 12661 ns
-Grow heap to 128 KiB after 0 bytes allocated
-Grow heap to 192 KiB after 62944 bytes allocated
+Finalize and initiate sweep took 0 ms 1006 ns + 0 ms 14758 ns
+Grow heap to 128 KiB after 96 bytes allocated
+Grow heap to 192 KiB after 64528 bytes allocated
 
---> Marking for collection #4 after 109680 allocated bytes
+--> Marking for collection #4 after 112368 allocated bytes
 Marked from 24 dirty pages
 GC #4 freed -3392 bytes, heap 192 KiB (+ 0 KiB unmapped + 384 KiB internal)
-World-stopped marking took 2 ms 714919 ns (1 ms in average)
+World-stopped marking took 2 ms 802398 ns (1 ms in average)
 In-use heap: 85% (161 KiB pointers + 3 KiB other)
 0 finalization entries; 0/0 short/long disappearing links alive
 0 finalization-ready objects; 0/0 short/long links cleared
-Finalize and initiate sweep took 0 ms 669 ns + 0 ms 22955 ns
-Grow heap to 260 KiB after 22464 bytes allocated
-Grow heap to 348 KiB after 91904 bytes allocated
-***>Full mark for collection #5 after 147280 allocd bytes
+Finalize and initiate sweep took 0 ms 875 ns + 0 ms 16944 ns
+Grow heap to 260 KiB after 23552 bytes allocated
+Grow heap to 348 KiB after 91584 bytes allocated
+***>Full mark for collection #5 after 125392 allocd bytes
 
---> Marking for collection #5 after 147280 allocated bytes
-Recycle 65536/65536 scratch-allocated bytes at 0x7f82bb678000
+--> Marking for collection #5 after 125392 allocated bytes
+Recycle 65536/65536 scratch-allocated bytes at 0x7fd50539f000
 Grew mark stack to 8192 frames
 GC #5 freed 0 bytes, heap 412 KiB (+ 0 KiB unmapped + 448 KiB internal)
-World-stopped marking took 2 ms 156451 ns (1 ms in average)
-In-use heap: 48% (198 KiB pointers + 3 KiB other)
+World-stopped marking took 2 ms 176272 ns (1 ms in average)
+In-use heap: 46% (188 KiB pointers + 3 KiB other)
 0 finalization entries; 0/0 short/long disappearing links alive
 0 finalization-ready objects; 0/0 short/long links cleared
-Finalize and initiate sweep took 0 ms 588 ns + 2 ms 13958 ns
+Finalize and initiate sweep took 0 ms 733 ns + 2 ms 18087 ns
 Adding block map for size of 0 granules (0 bytes)
 
---> Marking for collection #6 after 150128 allocated bytes
-Marked from 92 dirty pages
-Recycle 131072/131072 scratch-allocated bytes at 0x7f82afdca000
+--> Marking for collection #6 after 139888 allocated bytes
+Marked from 88 dirty pages
+Recycle 131072/131072 scratch-allocated bytes at 0x7fd4f9af1000
 Grew mark stack to 16384 frames
-GC #6 freed 62544 bytes, heap 540 KiB (+ 0 KiB unmapped + 576 KiB internal)
-World-stopped marking took 5 ms 325866 ns (2 ms in average)
-In-use heap: 72% (387 KiB pointers + 3 KiB other)
+GC #6 freed 53184 bytes, heap 540 KiB (+ 0 KiB unmapped + 576 KiB internal)
+World-stopped marking took 5 ms 713820 ns (2 ms in average)
+In-use heap: 68% (366 KiB pointers + 3 KiB other)
 0 finalization entries; 0/0 short/long disappearing links alive
 0 finalization-ready objects; 0/0 short/long links cleared
-Finalize and initiate sweep took 0 ms 512 ns + 0 ms 16931 ns
-Grow heap to 724 KiB after 116288 bytes allocated
+Finalize and initiate sweep took 0 ms 847 ns + 0 ms 24139 ns
+Grow heap to 724 KiB after 146064 bytes allocated
 
---> Marking for collection #7 after 222816 allocated bytes
+--> Marking for collection #7 after 212896 allocated bytes
 Marked from 116 dirty pages
 GC #7 freed 8192 bytes, heap 724 KiB (+ 0 KiB unmapped + 576 KiB internal)
-World-stopped marking took 4 ms 46822 ns (2 ms in average)
-In-use heap: 82% (598 KiB pointers + 3 KiB other)
+World-stopped marking took 4 ms 619059 ns (2 ms in average)
+In-use heap: 78% (569 KiB pointers + 3 KiB other)
 0 finalization entries; 0/0 short/long disappearing links alive
 0 finalization-ready objects; 0/0 short/long links cleared
-Finalize and initiate sweep took 0 ms 482 ns + 0 ms 26925 ns
-Grow heap to 968 KiB after 83504 bytes allocated
-***>Full mark for collection #8 after 295424 allocd bytes
+Finalize and initiate sweep took 0 ms 692 ns + 0 ms 21162 ns
+Grow heap to 968 KiB after 120976 bytes allocated
+***>Full mark for collection #8 after 263392 allocd bytes
 
---> Marking for collection #8 after 295424 allocated bytes
-Recycle 262144/262144 scratch-allocated bytes at 0x7f82afd8a000
+--> Marking for collection #8 after 263392 allocated bytes
+Recycle 262144/262144 scratch-allocated bytes at 0x7fd4f9ab1000
 Grew mark stack to 32768 frames
-GC #8 freed 24576 bytes, heap 1224 KiB (+ 0 KiB unmapped + 896 KiB internal)
-World-stopped marking took 4 ms 556400 ns (2 ms in average)
-In-use heap: 42% (523 KiB pointers + 3 KiB other)
+GC #8 freed 20480 bytes, heap 1224 KiB (+ 0 KiB unmapped + 896 KiB internal)
+World-stopped marking took 3 ms 816732 ns (2 ms in average)
+In-use heap: 41% (502 KiB pointers + 3 KiB other)
 0 finalization entries; 0/0 short/long disappearing links alive
 0 finalization-ready objects; 0/0 short/long links cleared
-Finalize and initiate sweep took 0 ms 516 ns + 2 ms 21566 ns
+Finalize and initiate sweep took 0 ms 1184 ns + 2 ms 206961 ns
 
---> Marking for collection #9 after 253248 allocated bytes
-Marked from 225 dirty pages
-GC #9 freed 299696 bytes, heap 1224 KiB (+ 0 KiB unmapped + 896 KiB internal)
-World-stopped marking took 4 ms 59250 ns (2 ms in average)
-In-use heap: 69% (851 KiB pointers + 3 KiB other)
+--> Marking for collection #9 after 246448 allocated bytes
+Marked from 209 dirty pages
+GC #9 freed 276208 bytes, heap 1224 KiB (+ 0 KiB unmapped + 896 KiB internal)
+World-stopped marking took 4 ms 247586 ns (2 ms in average)
+In-use heap: 66% (815 KiB pointers + 3 KiB other)
 0 finalization entries; 0/0 short/long disappearing links alive
 0 finalization-ready objects; 0/0 short/long links cleared
-Finalize and initiate sweep took 0 ms 480 ns + 0 ms 79820 ns
-Grow heap to 1636 KiB after 315296 bytes allocated
+Finalize and initiate sweep took 0 ms 872 ns + 0 ms 72123 ns
 
---> Marking for collection #10 after 361456 allocated bytes
-Marked from 283 dirty pages
-Recycle 524288/524288 scratch-allocated bytes at 0x7f82afc8f000
+--> Marking for collection #10 after 372736 allocated bytes
+Marked from 101 dirty pages
+GC #10 freed 12288 bytes, heap 1224 KiB (+ 0 KiB unmapped + 896 KiB internal)
+World-stopped marking took 4 ms 779508 ns (2 ms in average)
+In-use heap: 96% (1173 KiB pointers + 3 KiB other)
+0 finalization entries; 0/0 short/long disappearing links alive
+0 finalization-ready objects; 0/0 short/long links cleared
+Finalize and initiate sweep took 0 ms 1008 ns + 0 ms 20721 ns
+Grow heap to 1636 KiB after 0 bytes allocated
+Grow heap to 2184 KiB after 421760 bytes allocated
+
+--> Marking for collection #11 after 506576 allocated bytes
+Marked from 366 dirty pages
+Recycle 524288/524288 scratch-allocated bytes at 0x7fd4f99b6000
 Grew mark stack to 65536 frames
-GC #10 freed 16384 bytes, heap 2148 KiB (+ 0 KiB unmapped + 1408 KiB internal)
-World-stopped marking took 4 ms 920015 ns (3 ms in average)
-In-use heap: 55% (1192 KiB pointers + 3 KiB other)
+GC #11 freed 16384 bytes, heap 2696 KiB (+ 0 KiB unmapped + 1472 KiB internal)
+World-stopped marking took 4 ms 288316 ns (2 ms in average)
+In-use heap: 61% (1652 KiB pointers + 3 KiB other)
 0 finalization entries; 0/0 short/long disappearing links alive
 0 finalization-ready objects; 0/0 short/long links cleared
-Finalize and initiate sweep took 0 ms 489 ns + 0 ms 31173 ns
+Finalize and initiate sweep took 0 ms 1460 ns + 0 ms 28476 ns
+***>Full mark for collection #12 after 637840 allocd bytes
 
---> Marking for collection #11 after 485088 allocated bytes
-Marked from 374 dirty pages
-GC #11 freed 28672 bytes, heap 2148 KiB (+ 0 KiB unmapped + 1472 KiB internal)
-World-stopped marking took 5 ms 215059 ns (3 ms in average)
-In-use heap: 76% (1644 KiB pointers + 3 KiB other)
-0 finalization entries; 0/0 short/long disappearing links alive
-0 finalization-ready objects; 0/0 short/long links cleared
-Finalize and initiate sweep took 0 ms 354 ns + 0 ms 40190 ns
-Grow heap to 2868 KiB after 405248 bytes allocated
-***>Full mark for collection #12 after 635152 allocd bytes
-
---> Marking for collection #12 after 635152 allocated bytes
-Recycle 1048576/1048576 scratch-allocated bytes at 0x7f82afb28000
+--> Marking for collection #12 after 637840 allocated bytes
+Recycle 1048576/1048576 scratch-allocated bytes at 0x7fd4f97b6000
 Grew mark stack to 131072 frames
-GC #12 freed 32768 bytes, heap 3892 KiB (+ 0 KiB unmapped + 2560 KiB internal)
-World-stopped marking took 6 ms 788298 ns (3 ms in average)
-In-use heap: 33% (1309 KiB pointers + 3 KiB other)
+GC #12 freed 24576 bytes, heap 3720 KiB (+ 0 KiB unmapped + 2560 KiB internal)
+World-stopped marking took 5 ms 634291 ns (3 ms in average)
+In-use heap: 36% (1346 KiB pointers + 3 KiB other)
 0 finalization entries; 0/0 short/long disappearing links alive
 0 finalization-ready objects; 0/0 short/long links cleared
-Finalize and initiate sweep took 0 ms 492 ns + 10 ms 25005 ns
+Finalize and initiate sweep took 0 ms 1139 ns + 6 ms 763769 ns
 
---> Marking for collection #13 after 519840 allocated bytes
-Marked from 583 dirty pages
-GC #13 freed 785888 bytes, heap 3892 KiB (+ 0 KiB unmapped + 2560 KiB internal)
-World-stopped marking took 6 ms 140139 ns (3 ms in average)
-In-use heap: 51% (2005 KiB pointers + 3 KiB other)
+--> Marking for collection #13 after 544688 allocated bytes
+Marked from 578 dirty pages
+GC #13 freed 597440 bytes, heap 3720 KiB (+ 0 KiB unmapped + 2560 KiB internal)
+World-stopped marking took 7 ms 16987 ns (3 ms in average)
+In-use heap: 60% (2232 KiB pointers + 3 KiB other)
 0 finalization entries; 0/0 short/long disappearing links alive
 0 finalization-ready objects; 0/0 short/long links cleared
-Finalize and initiate sweep took 0 ms 432 ns + 2 ms 375001 ns
+Finalize and initiate sweep took 0 ms 1478 ns + 1 ms 828634 ns
 GC_stopped_mark start(alloc.c)
 GC_stopped_mark end(alloc.c)
 GC_stopped_mark start(alloc.c)
-Time since the previous GC : 1 ms 834262 ns
+Time since the previous GC : 1 ms 799810 ns
 GC_stopped_mark end(alloc.c)
 GC_stopped_mark start(alloc.c)
-Time since the previous GC : 6 ms 561691 ns
+Time since the previous GC : 4 ms 153225 ns
 GC_stopped_mark end(alloc.c)
 GC_stopped_mark start(alloc.c)
-Time since the previous GC : 3 ms 338863 ns
+Time since the previous GC : 3 ms 124767 ns
 GC_stopped_mark end(alloc.c)
 GC_stopped_mark start(alloc.c)
-Time since the previous GC : 6 ms 533261 ns
+Time since the previous GC : 6 ms 531913 ns
 GC_stopped_mark end(alloc.c)
 GC_stopped_mark start(alloc.c)
-Time since the previous GC : 5 ms 180364 ns
+Time since the previous GC : 5 ms 31978 ns
 GC_stopped_mark end(alloc.c)
 GC_stopped_mark start(alloc.c)
-Time since the previous GC : 4 ms 413409 ns
+Time since the previous GC : 4 ms 279178 ns
 GC_stopped_mark end(alloc.c)
 GC_stopped_mark start(alloc.c)
-Time since the previous GC : 7 ms 676680 ns
+Time since the previous GC : 6 ms 503089 ns
 GC_stopped_mark end(alloc.c)
 GC_stopped_mark start(alloc.c)
-Time since the previous GC : 8 ms 502038 ns
+Time since the previous GC : 8 ms 562252 ns
 GC_stopped_mark end(alloc.c)
 GC_stopped_mark start(alloc.c)
-Time since the previous GC : 11 ms 186282 ns
+Time since the previous GC : 10 ms 232101 ns
 GC_stopped_mark end(alloc.c)
 GC_stopped_mark start(alloc.c)
-Time since the previous GC : 19 ms 412338 ns
+Time since the previous GC : 20 ms 965523 ns
 GC_stopped_mark end(alloc.c)
 GC_stopped_mark start(alloc.c)
-Time since the previous GC : 28 ms 982210 ns
+Time since the previous GC : 33 ms 11124 ns
 GC_stopped_mark end(alloc.c)
 GC_stopped_mark start(alloc.c)
-Time since the previous GC : 243 ms 368043 ns
+Time since the previous GC : 246 ms 208022 ns
 GC_stopped_mark end(alloc.c)
-55479 added, 2076405 found; 20448 removed, 6866 locked, 0 marked; 35031 remains
+55564 added, 2073856 found; 16268 removed, 10104 locked, 0 marked; 39296 remains
 PASS disclaim_weakmap_test (exit status: 0)

@@ -6,12 +6,12 @@ Initiating full world-stop collection!
 
 --> Marking for collection #1 after 0 allocated bytes
 GC #1 freed 0 bytes, heap 64 KiB (+ 0 KiB unmapped + 192 KiB internal)
-World-stopped marking took 1 ms 733818 ns (1 ms in average)
+World-stopped marking took 1 ms 815187 ns (1 ms in average)
 In-use heap: 0% (0 KiB pointers + 0 KiB other)
 0 finalization entries; 0/0 short/long disappearing links alive
 0 finalization-ready objects; 0/0 short/long links cleared
-Finalize and initiate sweep took 0 ms 3063 ns + 0 ms 11272 ns
-Complete collection took 3 ms 489239 ns
+Finalize and initiate sweep took 0 ms 3887 ns + 0 ms 6118 ns
+Complete collection took 3 ms 750170 ns
 Started 15 mark helper threads
 Adding block map for size of 64 granules (1024 bytes)
 Adding block map for size of 3 granules (48 bytes)
@@ -20,128 +20,129 @@ Initiating full world-stop collection!
 
 --> Marking for collection #2 after 1584 allocated bytes
 GC #2 freed 0 bytes, heap 64 KiB (+ 0 KiB unmapped + 256 KiB internal)
-World-stopped marking took 1 ms 859607 ns (1 ms in average)
+World-stopped marking took 2 ms 206221 ns (1 ms in average)
 In-use heap: 2% (2 KiB pointers + 0 KiB other)
 0 finalization entries; 0/0 short/long disappearing links alive
 0 finalization-ready objects; 0/0 short/long links cleared
-Finalize and initiate sweep took 0 ms 4502 ns + 0 ms 12560 ns
-Complete collection took 1 ms 909135 ns
+Finalize and initiate sweep took 0 ms 6097 ns + 0 ms 7462 ns
+Complete collection took 2 ms 253282 ns
 Initiating full world-stop collection!
 
 --> Marking for collection #3 after 1584 allocated bytes
 GC #3 freed 0 bytes, heap 64 KiB (+ 0 KiB unmapped + 256 KiB internal)
-World-stopped marking took 1 ms 947859 ns (1 ms in average)
+World-stopped marking took 1 ms 963893 ns (1 ms in average)
 In-use heap: 4% (3 KiB pointers + 0 KiB other)
 0 finalization entries; 0/0 short/long disappearing links alive
 0 finalization-ready objects; 0/0 short/long links cleared
-Finalize and initiate sweep took 0 ms 7183 ns + 1 ms 644237 ns
-Complete collection took 3 ms 632199 ns
+Finalize and initiate sweep took 0 ms 14171 ns + 0 ms 7111 ns
+Complete collection took 2 ms 13320 ns
 Found 1 leaked objects:
+0x7fd0e61f5fe0 (tests/thread_leak_test.c:35, sz= 4, NORMAL)
 Initiating full world-stop collection!
-0x7f8342364fe0 (tests/thread_leak_test.c:35, sz= 4, NORMAL)
 
 --> Marking for collection #4 after 1584 allocated bytes
 GC #4 freed 0 bytes, heap 64 KiB (+ 0 KiB unmapped + 256 KiB internal)
-World-stopped marking took 1 ms 911257 ns (1 ms in average)
-In-use heap: 6% (4 KiB pointers + 0 KiB other)
+World-stopped marking took 2 ms 4597 ns (1 ms in average)
+In-use heap: 5% (4 KiB pointers + 0 KiB other)
 0 finalization entries; 0/0 short/long disappearing links alive
 0 finalization-ready objects; 0/0 short/long links cleared
-Finalize and initiate sweep took 0 ms 4449 ns + 0 ms 12335 ns
-Complete collection took 1 ms 961233 ns
+Finalize and initiate sweep took 0 ms 5557 ns + 0 ms 7124 ns
+Complete collection took 2 ms 45776 ns
+Found 1 leaked objects:
+0x7fd0e61f5f80 (tests/thread_leak_test.c:35, sz= 4, NORMAL)
 Initiating full world-stop collection!
 
 --> Marking for collection #5 after 1584 allocated bytes
 GC #5 freed 0 bytes, heap 64 KiB (+ 0 KiB unmapped + 256 KiB internal)
-World-stopped marking took 1 ms 869411 ns (1 ms in average)
+World-stopped marking took 1 ms 973540 ns (1 ms in average)
 In-use heap: 7% (5 KiB pointers + 0 KiB other)
 0 finalization entries; 0/0 short/long disappearing links alive
 0 finalization-ready objects; 0/0 short/long links cleared
-Finalize and initiate sweep took 0 ms 4508 ns + 0 ms 12654 ns
-Complete collection took 1 ms 920631 ns
-Found 2 leaked objects:
-0x7f8342364ec0 (tests/thread_leak_test.c:35, sz= 4, NORMAL)
-0x7f8342364f20 (tests/thread_leak_test.c:35, sz= 4, NORMAL)
+Finalize and initiate sweep took 0 ms 5452 ns + 0 ms 7209 ns
+Complete collection took 2 ms 8779 ns
+Found 1 leaked objects:
+0x7fd0e61f5fe0 (tests/thread_leak_test.c:35, sz= 4, NORMAL)
 Initiating full world-stop collection!
 
 --> Marking for collection #6 after 1584 allocated bytes
 GC #6 freed 0 bytes, heap 64 KiB (+ 0 KiB unmapped + 256 KiB internal)
-World-stopped marking took 2 ms 470018 ns (1 ms in average)
+World-stopped marking took 1 ms 971533 ns (1 ms in average)
 In-use heap: 8% (6 KiB pointers + 0 KiB other)
 0 finalization entries; 0/0 short/long disappearing links alive
 0 finalization-ready objects; 0/0 short/long links cleared
-Finalize and initiate sweep took 0 ms 4233 ns + 0 ms 12428 ns
-Complete collection took 2 ms 518578 ns
+Finalize and initiate sweep took 0 ms 4830 ns + 0 ms 6744 ns
+Complete collection took 2 ms 6520 ns
 Found 1 leaked objects:
-0x7f8342364fe0 (tests/thread_leak_test.c:35, sz= 4, NORMAL)
+0x7fd0e61f5f20 (tests/thread_leak_test.c:35, sz= 4, NORMAL)
 Initiating full world-stop collection!
 
 --> Marking for collection #7 after 0 allocated bytes
 GC #7 freed 0 bytes, heap 64 KiB (+ 0 KiB unmapped + 256 KiB internal)
-World-stopped marking took 4 ms 315610 ns (1 ms in average)
+World-stopped marking took 2 ms 62349 ns (1 ms in average)
 In-use heap: 3% (2 KiB pointers + 0 KiB other)
 0 finalization entries; 0/0 short/long disappearing links alive
 0 finalization-ready objects; 0/0 short/long links cleared
-Finalize and initiate sweep took 0 ms 4245 ns + 0 ms 12965 ns
-Complete collection took 4 ms 371688 ns
+Finalize and initiate sweep took 0 ms 4605 ns + 0 ms 7168 ns
+Complete collection took 2 ms 102118 ns
 Found 1 leaked objects:
-0x7f8342364f50 (tests/thread_leak_test.c:35, sz= 4, NORMAL)
+0x7fd0e61f5f80 (tests/thread_leak_test.c:35, sz= 4, NORMAL)
 Initiating full world-stop collection!
 
 --> Marking for collection #8 after 0 allocated bytes
 GC #8 freed 0 bytes, heap 64 KiB (+ 0 KiB unmapped + 256 KiB internal)
-World-stopped marking took 1 ms 890368 ns (1 ms in average)
+World-stopped marking took 0 ms 160985 ns (1 ms in average)
 In-use heap: 3% (2 KiB pointers + 0 KiB other)
 0 finalization entries; 0/0 short/long disappearing links alive
 0 finalization-ready objects; 0/0 short/long links cleared
-Finalize and initiate sweep took 0 ms 3718 ns + 0 ms 12616 ns
-Complete collection took 1 ms 935199 ns
+Finalize and initiate sweep took 0 ms 3812 ns + 1 ms 999254 ns
+Complete collection took 2 ms 185997 ns
 Initiating full world-stop collection!
 
 --> Marking for collection #9 after 0 allocated bytes
 GC #9 freed 0 bytes, heap 64 KiB (+ 0 KiB unmapped + 256 KiB internal)
-World-stopped marking took 0 ms 132195 ns (1 ms in average)
+World-stopped marking took 0 ms 137311 ns (1 ms in average)
 In-use heap: 3% (2 KiB pointers + 0 KiB other)
 0 finalization entries; 0/0 short/long disappearing links alive
 0 finalization-ready objects; 0/0 short/long links cleared
-Finalize and initiate sweep took 0 ms 3422 ns + 1 ms 651487 ns
-Complete collection took 1 ms 818932 ns
+Finalize and initiate sweep took 0 ms 3963 ns + 0 ms 6620 ns
+Complete collection took 0 ms 167242 ns
 Initiating full world-stop collection!
 
 --> Marking for collection #10 after 0 allocated bytes
 GC #10 freed 0 bytes, heap 64 KiB (+ 0 KiB unmapped + 256 KiB internal)
-World-stopped marking took 0 ms 108276 ns (1 ms in average)
+World-stopped marking took 0 ms 125975 ns (1 ms in average)
 In-use heap: 3% (2 KiB pointers + 0 KiB other)
 0 finalization entries; 0/0 short/long disappearing links alive
 0 finalization-ready objects; 0/0 short/long links cleared
-Finalize and initiate sweep took 0 ms 3417 ns + 0 ms 12854 ns
-Complete collection took 0 ms 153967 ns
+Finalize and initiate sweep took 0 ms 3568 ns + 0 ms 6391 ns
+Complete collection took 0 ms 153280 ns
 GC_stopped_mark start(alloc.c)
 GC_stopped_mark end(alloc.c)
 GC_stopped_mark start(alloc.c)
-Time since the previous GC : 1 ms 975563 ns
+Time since the previous GC : 6 ms 233512 ns
 GC_stopped_mark end(alloc.c)
 GC_stopped_mark start(alloc.c)
-Time since the previous GC : 0 ms 73739 ns
+Time since the previous GC : 0 ms 65364 ns
 GC_stopped_mark end(alloc.c)
 GC_stopped_mark start(alloc.c)
-Time since the previous GC : 1 ms 707805 ns
+Time since the previous GC : 0 ms 77418 ns
 GC_stopped_mark end(alloc.c)
 GC_stopped_mark start(alloc.c)
-Time since the previous GC : 0 ms 73785 ns
+Time since the previous GC : 0 ms 68892 ns
 GC_stopped_mark end(alloc.c)
 GC_stopped_mark start(alloc.c)
-Time since the previous GC : 0 ms 105430 ns
+Time since the previous GC : 0 ms 119678 ns
 GC_stopped_mark end(alloc.c)
 GC_stopped_mark start(alloc.c)
-Time since the previous GC : 0 ms 105355 ns
+Time since the previous GC : 0 ms 79552 ns
 GC_stopped_mark end(alloc.c)
 GC_stopped_mark start(alloc.c)
-Time since the previous GC : 0 ms 75212 ns
+Time since the previous GC : 0 ms 43515 ns
 GC_stopped_mark end(alloc.c)
 GC_stopped_mark start(alloc.c)
-Time since the previous GC : 0 ms 48030 ns
+Time since the previous GC : 2 ms 28598 ns
 GC_stopped_mark end(alloc.c)
 GC_stopped_mark start(alloc.c)
-Time since the previous GC : 1 ms 687762 ns
+Time since the previous GC : 0 ms 31596 ns
 GC_stopped_mark end(alloc.c)
 PASS threadleaktest (exit status: 0)
