@@ -16,6 +16,7 @@
  */
 
 #include "private/gc_priv.h"
+#include <stdio.h>
 
 #ifdef ENABLE_DISCLAIM
 #  include "gc_disclaim.h"
@@ -399,6 +400,20 @@ STATIC void GC_reclaim_block(struct hblk *hbp, word report_if_found)
 #   endif
     if( sz > MAXOBJBYTES ) {  /* 1 big object */
         if( !mark_bit_from_hdr(hhdr, 0) ) {
+          // taiga debug
+            // GC_word obj_start_base = (GC_word)GC_base(hbp);
+            // GC_word obj_start_base_page_address = obj_start_base + hhdr->hb_map;
+            // GC_word obj_start_map_page_address = (GC_word)hbp + hhdr->hb_map;
+            // printf("====================================\n");
+            // printf("free obj : hbp : %p\n",(void*)hbp);
+            // printf("free obj : hhdr : %p\n",(void*)hhdr);
+            // printf("free obj : hb_map : %hu\n",hhdr->hb_map);
+            // printf("free obj : obj_start_base : %p\n",(void*)obj_start_base);
+            // printf("free obj : obj_start_base_page_address : %p\n",(void*)obj_start_base_page_address);
+            // printf("free obj : obj_start_map_page_address : %p\n",(void*)obj_start_map_page_address);
+            // printf("free obj : size : %lu\n", hhdr->hb_sz);
+            // printf("====================================\n");
+          // taiga debug
             if (report_if_found) {
               GC_add_leaked((ptr_t)hbp);
             } else {
@@ -431,7 +446,26 @@ STATIC void GC_reclaim_block(struct hblk *hbp, word report_if_found)
               GC_atomic_in_use += sz;
             } else {
               GC_composite_in_use += sz;
+            } 
+
+            // taiga added
+            GC_word obj_start_address = (GC_word)GC_base(hbp);
+            GC_word obj_end_address = obj_start_address + hhdr->hb_sz * 8;
+            // printf("marked obj : obj_start_base : %p\n",(void*)obj_start_address);
+            // printf("marked obj : obj_end_address : %p\n",(void*)obj_end_address);
+            // printf("marked obj : size : %lu\n", hhdr->hb_sz);
+            const char *marked_bit_file_path = "/home/funkytaiga/tmp_champ/ChampSim-Ramulator/tmp_gc_marked_pages_files/tmp.txt";
+            FILE *file = fopen(marked_bit_file_path, "a");
+
+            if (file == NULL) {
+              fprintf(stderr, "ファイル %s を開けませんでした。\n", marked_bit_file_path);
+              return;
             }
+            fprintf(file, "marked start address:%p\n",(void*)obj_start_address);
+            fprintf(file, "marked end address:%p\n",(void*)obj_end_address);
+            // fprintf(file, "marked size:%lu\n", hhdr->hb_sz);
+            fclose(file);
+            // taiga added
         }
     } else {
         GC_bool empty = GC_block_empty(hhdr);
@@ -671,6 +705,18 @@ GC_INNER void GC_start_reclaim(GC_bool report_if_found)
 
   /* Go through all heap blocks (in hblklist) and reclaim unmarked objects */
   /* or enqueue the block for later processing.                            */
+    // taiga added
+    const char *marked_bit_file_path = "/home/funkytaiga/tmp_champ/ChampSim-Ramulator/tmp_gc_marked_pages_files/tmp.txt";
+    FILE *file = fopen(marked_bit_file_path, "a");
+
+    if (file == NULL) {
+      fprintf(stderr, "ファイル %s を開けませんでした。\n", marked_bit_file_path);
+      return;
+    }
+    fprintf(file, "GC start\n");
+    // ファイルを閉じる
+    fclose(file);
+    // taiga added
     GC_apply_to_all_blocks(GC_reclaim_block, (word)report_if_found);
 
 # ifdef EAGER_SWEEP
