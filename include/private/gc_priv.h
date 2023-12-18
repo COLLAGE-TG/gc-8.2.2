@@ -1887,6 +1887,10 @@ void GC_apply_to_all_blocks(void (*fn)(struct hblk *h, word client_data),
                             word client_data);
                         /* Invoke fn(hbp, client_data) for each         */
                         /* allocated heap block.                        */
+// taiga added
+void GC_apply_to_all_blocks_for_reclaim_block(void (*fn)(struct hblk *h, word client_data),
+                            word client_data);
+// taiga added
 GC_INNER struct hblk * GC_next_block(struct hblk *h, GC_bool allow_free);
                         /* Get the next block whose address is at least */
                         /* h.  Returned block is managed by GC.  The    */
