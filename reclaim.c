@@ -709,6 +709,7 @@ GC_INNER void GC_start_reclaim(GC_bool report_if_found)
     // taiga added
     // const char *marked_bit_file_path = "/home/funkytaiga/tmp_champ/ChampSim-Ramulator/tmp_gc_marked_pages_files/tmp.txt";
     FILE *file = fopen(marked_bit_file_path, "a");
+    prev_gc_start = ftell(file);
 
     if (file == NULL) {
       fprintf(stderr, "ファイル %s を開けませんでした。\n", marked_bit_file_path);
@@ -720,6 +721,16 @@ GC_INNER void GC_start_reclaim(GC_bool report_if_found)
     // taiga added
     // GC_apply_to_all_blocks(GC_reclaim_block, (word)report_if_found);
     GC_apply_to_all_blocks_for_reclaim_block(GC_reclaim_block, (word)report_if_found);
+    // taiga added
+    FILE *file_ver2 = fopen(marked_bit_file_path, "a");
+    if (file_ver2 == NULL) {
+      fprintf(stderr, "ファイル %s を開けませんでした。\n", marked_bit_file_path);
+      return;
+    }
+    fprintf(file_ver2, "GC end\n");
+    // ファイルを閉じる
+    fclose(file_ver2);
+    // taiga added
 # ifdef EAGER_SWEEP
     /* This is a very stupid thing to do.  We make it possible anyway,  */
     /* so that you can convince yourself that it really is very stupid. */

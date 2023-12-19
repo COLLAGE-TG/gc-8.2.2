@@ -20,6 +20,7 @@
 
 #include <stdio.h>
 #include <time.h>
+#include "for_champsim.h"
 #if !defined(MACOS) && !defined(MSWINCE)
 # include <signal.h>
 # if !defined(GC_NO_TYPES) && !defined(SN_TARGET_PSP2) \
@@ -522,6 +523,13 @@ STATIC void GC_maybe_gc(void)
             GC_clear_marks();
             n_partial_gcs = 0;
             GC_is_full_gc = TRUE;
+            // taiga added
+            FILE *file = fopen(marked_bit_file_path, "a");
+            fseek(file, prev_gc_start, SEEK_SET);
+            fprintf(file, "FULL_GC_START\n");
+            // ファイルを閉じる
+            fclose(file);
+            // taiga added
           } else {
             n_partial_gcs++;
           }

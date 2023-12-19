@@ -114,7 +114,7 @@ extra/gc.lo: extra/gc.c /usr/include/stdc-predef.h extra/../backgraph.c \
  /usr/include/x86_64-linux-gnu/bits/stdio.h extra/../obj_map.c \
  extra/../ptr_chck.c include/gc_inline.h include/gc.h \
  include/gc_tiny_fl.h extra/../allchblk.c extra/../alloc.c \
- extra/../dbg_mlc.c /usr/include/errno.h \
+ include/for_champsim.h extra/../dbg_mlc.c /usr/include/errno.h \
  /usr/include/x86_64-linux-gnu/bits/errno.h /usr/include/linux/errno.h \
  /usr/include/x86_64-linux-gnu/asm/errno.h \
  /usr/include/asm-generic/errno.h /usr/include/asm-generic/errno-base.h \
@@ -122,9 +122,8 @@ extra/gc.lo: extra/gc.c /usr/include/stdc-predef.h extra/../backgraph.c \
  include/javaxfc.h extra/../fnlz_mlc.c include/gc_disclaim.h \
  extra/../malloc.c extra/../mallocx.c include/private/gc_alloc_ptrs.h \
  extra/../mark.c extra/../mark_rts.c extra/../reclaim.c \
- include/for_champsim.h extra/../typd_mlc.c include/gc_typed.h \
- extra/../misc.c /usr/include/fcntl.h \
- /usr/include/x86_64-linux-gnu/bits/fcntl.h \
+ extra/../typd_mlc.c include/gc_typed.h extra/../misc.c \
+ /usr/include/fcntl.h /usr/include/x86_64-linux-gnu/bits/fcntl.h \
  /usr/include/x86_64-linux-gnu/bits/fcntl-linux.h \
  /usr/include/x86_64-linux-gnu/bits/types/struct_iovec.h \
  /usr/include/linux/falloc.h /usr/include/x86_64-linux-gnu/bits/stat.h \
@@ -321,6 +320,7 @@ include/gc.h:
 include/gc_tiny_fl.h:
 extra/../allchblk.c:
 extra/../alloc.c:
+include/for_champsim.h:
 extra/../dbg_mlc.c:
 /usr/include/errno.h:
 /usr/include/x86_64-linux-gnu/bits/errno.h:
@@ -339,7 +339,6 @@ include/private/gc_alloc_ptrs.h:
 extra/../mark.c:
 extra/../mark_rts.c:
 extra/../reclaim.c:
-include/for_champsim.h:
 extra/../typd_mlc.c:
 include/gc_typed.h:
 extra/../misc.c:
