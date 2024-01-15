@@ -490,7 +490,14 @@ STATIC GC_bool GC_is_full_gc = FALSE;
 
 STATIC GC_bool GC_stopped_mark(GC_stop_func stop_func);
 STATIC void GC_finish_collection(void);
-
+// taiga added
+char* marked_bit_file_path = NULL;
+void init_markpath(int size) {
+  // ライブラリ内のchar型の配列を動的に確保し、初期化
+  marked_bit_file_path = (char*)GC_MALLOC(size * sizeof(char));
+  memset(marked_bit_file_path, 0, size);  // ゼロで初期化（任意の初期化方法に置き換え可能）
+}
+// taiga added
 /*
  * Initiate a garbage collection if appropriate.
  * Choose judiciously
@@ -846,7 +853,7 @@ STATIC GC_bool GC_stopped_mark(GC_stop_func stop_func)
     int i;
 #   ifndef NO_CLOCK
       // --- Code added by Taiga
-      printf("GC_stopped_mark start(alloc.c)\n");
+      // printf("GC_stopped_mark start(alloc.c)\n");
       if (GC_PRINT_STATS_FLAG) {
         if(GC_gc_no!=0) { // 初回はスキップ
           CLOCK_TYPE cur_time_for_between;
@@ -1023,7 +1030,7 @@ STATIC GC_bool GC_stopped_mark(GC_stop_func stop_func)
         // --- code added by Taiga
         GET_TIME(t_prev_gc); //前のGCが終わった時間を記録
         // --- Code added by Taiga
-        printf("GC_stopped_mark end(alloc.c)\n");
+        // printf("GC_stopped_mark end(alloc.c)\n");
         // --- Code added by Taiga
         // ---
       }

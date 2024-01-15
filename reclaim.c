@@ -379,6 +379,15 @@ STATIC void GC_reclaim_small_nonempty_block(struct hblk *hbp, word sz,
   }
 #endif /* ENABLE_DISCLAIM */
 
+// taiga added
+// char* marked_bit_file_path = NULL;
+// void init_markpath(int size) {
+//   // ライブラリ内のchar型の配列を動的に確保し、初期化
+//   marked_bit_file_path = (char*)malloc(size * sizeof(char));
+//   memset(marked_bit_file_path, 0, size);  // ゼロで初期化（任意の初期化方法に置き換え可能）
+// }
+// taiga added
+
 /*
  * Restore an unmarked large object or an entirely empty blocks of small objects
  * to the heap block free list.
