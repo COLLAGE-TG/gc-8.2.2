@@ -122,8 +122,12 @@ extra/gc.lo: extra/gc.c /usr/include/stdc-predef.h extra/../backgraph.c \
  include/javaxfc.h extra/../fnlz_mlc.c include/gc_disclaim.h \
  extra/../malloc.c extra/../mallocx.c include/private/gc_alloc_ptrs.h \
  extra/../mark.c extra/../mark_rts.c extra/../reclaim.c \
- extra/../typd_mlc.c include/gc_typed.h extra/../misc.c \
- /usr/include/fcntl.h /usr/include/x86_64-linux-gnu/bits/fcntl.h \
+ /usr/lib/gcc/x86_64-linux-gnu/10/include/stdint.h /usr/include/stdint.h \
+ /usr/include/x86_64-linux-gnu/bits/wchar.h \
+ /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
+ /usr/include/inttypes.h extra/../typd_mlc.c include/gc_typed.h \
+ extra/../misc.c /usr/include/fcntl.h \
+ /usr/include/x86_64-linux-gnu/bits/fcntl.h \
  /usr/include/x86_64-linux-gnu/bits/fcntl-linux.h \
  /usr/include/x86_64-linux-gnu/bits/types/struct_iovec.h \
  /usr/include/linux/falloc.h /usr/include/x86_64-linux-gnu/bits/stat.h \
@@ -153,9 +157,6 @@ extra/gc.lo: extra/gc.c /usr/include/stdc-predef.h extra/../backgraph.c \
  /usr/include/x86_64-linux-gnu/asm/unistd_64.h \
  /usr/include/x86_64-linux-gnu/bits/syscall.h /usr/include/ucontext.h \
  /usr/include/x86_64-linux-gnu/bits/indirect-return.h \
- /usr/lib/gcc/x86_64-linux-gnu/10/include/stdint.h /usr/include/stdint.h \
- /usr/include/x86_64-linux-gnu/bits/wchar.h \
- /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
  /usr/include/x86_64-linux-gnu/sys/utsname.h \
  /usr/include/x86_64-linux-gnu/bits/utsname.h /usr/include/execinfo.h \
  extra/../thread_local_alloc.c include/private/thread_local_alloc.h \
@@ -339,6 +340,11 @@ include/private/gc_alloc_ptrs.h:
 extra/../mark.c:
 extra/../mark_rts.c:
 extra/../reclaim.c:
+/usr/lib/gcc/x86_64-linux-gnu/10/include/stdint.h:
+/usr/include/stdint.h:
+/usr/include/x86_64-linux-gnu/bits/wchar.h:
+/usr/include/x86_64-linux-gnu/bits/stdint-uintn.h:
+/usr/include/inttypes.h:
 extra/../typd_mlc.c:
 include/gc_typed.h:
 extra/../misc.c:
@@ -380,10 +386,6 @@ extra/../os_dep.c:
 /usr/include/x86_64-linux-gnu/bits/syscall.h:
 /usr/include/ucontext.h:
 /usr/include/x86_64-linux-gnu/bits/indirect-return.h:
-/usr/lib/gcc/x86_64-linux-gnu/10/include/stdint.h:
-/usr/include/stdint.h:
-/usr/include/x86_64-linux-gnu/bits/wchar.h:
-/usr/include/x86_64-linux-gnu/bits/stdint-uintn.h:
 /usr/include/x86_64-linux-gnu/sys/utsname.h:
 /usr/include/x86_64-linux-gnu/bits/utsname.h:
 /usr/include/execinfo.h:

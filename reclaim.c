@@ -18,6 +18,8 @@
 #include "private/gc_priv.h"
 #include "for_champsim.h"
 #include <stdio.h>
+#include <stdint.h>
+#include <inttypes.h>
 
 #ifdef ENABLE_DISCLAIM
 #  include "gc_disclaim.h"
@@ -128,7 +130,6 @@ GC_INNER void GC_print_all_errors(void)
     printing_errors = FALSE;
     UNLOCK();
 }
-
 
 /*
  * reclaim phase
@@ -402,19 +403,56 @@ STATIC void GC_reclaim_block(struct hblk *hbp, word report_if_found)
     if( sz > MAXOBJBYTES ) {  /* 1 big object */
         if( !mark_bit_from_hdr(hhdr, 0) ) {
           // taiga debug
+#if(PRINT_MARKED_OBJECT == 0)
+          // ＝＝＝＝＝＝＝＝unmarked_pagesを出力します＝＝＝＝＝＝＝＝＝＝＝＝
             // GC_word obj_start_base = (GC_word)GC_base(hbp);
             // GC_word obj_start_base_page_address = obj_start_base + hhdr->hb_map;
             // GC_word obj_start_map_page_address = (GC_word)hbp + hhdr->hb_map;
+            // uintptr_t hb_body_start_address = (uintptr_t) (hbp->hb_body);
+            // uintptr_t hb_body_end_address = (uintptr_t) (hbp->hb_body + sz);
+            // void *hb_body_void_start = (void *) (hbp->hb_body);
+            // void *hb_body_void_end = (void *)(hbp->hb_body + sz);
             // printf("====================================\n");
             // printf("free obj : hbp : %p\n",(void*)hbp);
+            // printf("free obj : hbp->hb_body(uintptr_t) : %" PRIuPTR "\n", hb_body_start_address);
+            // printf("free obj : hbp->hb_body(uintptr_t) : %" PRIuPTR "\n", hb_body_end_address);
+            // printf("free obj : hbp->hb_body(void *) : %p\n", hb_body_void_start);
+            // printf("free obj : hbp->hb_body(void *) : %p\n", hb_body_void_end);
             // printf("free obj : hhdr : %p\n",(void*)hhdr);
             // printf("free obj : hb_map : %hu\n",hhdr->hb_map);
             // printf("free obj : obj_start_base : %p\n",(void*)obj_start_base);
             // printf("free obj : obj_start_base_page_address : %p\n",(void*)obj_start_base_page_address);
             // printf("free obj : obj_start_map_page_address : %p\n",(void*)obj_start_map_page_address);
             // printf("free obj : size : %lu\n", hhdr->hb_sz);
+
             // printf("====================================\n");
           // taiga debug
+          //  ＝＝＝＝＝＝GC対象のアドレスをChampSimに渡す場合＝＝＝＝＝
+            // taiga added
+            GC_word obj_start_address = (GC_word)GC_base(hbp);
+            GC_word obj_end_address = obj_start_address + hhdr->hb_sz;
+            // printf("marked obj : obj_start_base : %p\n",(void*)obj_start_address);
+            // printf("marked obj : obj_end_address : %p\n",(void*)obj_end_address);
+            // printf("marked obj : size : %lu\n", hhdr->hb_sz);
+            FILE *file = fopen(marked_bit_file_path, "a");
+
+            // debug
+            // void* address_hbp_head = GC_base(hbp);
+            // printf("obj_start_address (not marked) : %p\n", address_hbp_head);
+            // printf("obj_end_address (not marked) : %p\n", (void*)obj_end_address);
+            // debug
+
+            if (file == NULL) {
+              fprintf(stderr, "ファイル %s を開けませんでした。\n", marked_bit_file_path);
+              return;
+            }
+            fprintf(file, "sta_ad:%p\n",(void*)obj_start_address);
+            fprintf(file, "end_ad:%p\n",(void*)obj_end_address);
+            // fprintf(file, "marked size:%lu\n", hhdr->hb_sz);
+            fclose(file);
+#endif // PRINT_MARKED_OBJECT
+            // taiga added
+          //  ＝＝＝＝＝＝GC対象のアドレスをChampSimに渡す場合＝＝＝＝＝
             if (report_if_found) {
               GC_add_leaked((ptr_t)hbp);
             } else {
@@ -449,26 +487,34 @@ STATIC void GC_reclaim_block(struct hblk *hbp, word report_if_found)
               GC_composite_in_use += sz;
             } 
 
-            // taiga added
+            // // taiga added
+#if(PRINT_MARKED_OBJECT==1)
+            // ＝＝＝＝＝＝＝＝marked_pageを出力します＝＝＝＝＝＝＝＝
             GC_word obj_start_address = (GC_word)GC_base(hbp);
-            GC_word obj_end_address = obj_start_address + hhdr->hb_sz;
+            GC_word obj_end_address = obj_start_address + sz;
             // printf("marked obj : obj_start_base : %p\n",(void*)obj_start_address);
             // printf("marked obj : obj_end_address : %p\n",(void*)obj_end_address);
             // printf("marked obj : size : %lu\n", hhdr->hb_sz);
-            // const char *marked_bit_file_path = "/home/funkytaiga/tmp_champ/ChampSim-Ramulator/tmp_gc_marked_pages_files/tmp.txt";
             FILE *file = fopen(marked_bit_file_path, "a");
+
+            // debug
+            // void* address_hbp_head = GC_base(hbp);
+            // printf("obj_start_address : %p\n", (void*)obj_start_address);
+            // printf("obj_end_address : %p\n", (void*)obj_end_address);
+            // debug
 
             if (file == NULL) {
               fprintf(stderr, "ファイル %s を開けませんでした。\n", marked_bit_file_path);
               return;
             }
-            fprintf(file, "marked_start_address:%p\n",(void*)obj_start_address);
-            fprintf(file, "marked_end_address:%p\n",(void*)obj_end_address);
+            fprintf(file, "sta_ad:%p\n",(void*)obj_start_address);
+            fprintf(file, "end_ad:%p\n",(void*)obj_end_address);
             // fprintf(file, "marked size:%lu\n", hhdr->hb_sz);
             fclose(file);
+#endif // PRINT_MARKED_OBJECT
             // taiga added
         }
-    } else {
+    } else { //if small object
         GC_bool empty = GC_block_empty(hhdr);
 #       ifdef PARALLEL_MARK
           /* Count can be low or one too high because we sometimes      */
@@ -493,6 +539,27 @@ STATIC void GC_reclaim_block(struct hblk *hbp, word report_if_found)
 #       endif
           /* else */ {
             GC_bytes_found += HBLKSIZE;
+            //  ＝＝＝＝＝＝GC対象のアドレスをChampSimに渡す場合＝＝＝＝＝
+            // taiga added
+#if(PRINT_MARKED_OBJECT==0)
+            GC_word obj_start_address = (GC_word)GC_base(hbp);
+            GC_word obj_end_address = obj_start_address + hhdr->hb_sz;
+            // printf("marked obj : obj_start_base : %p\n",(void*)obj_start_address);
+            // printf("marked obj : obj_end_address : %p\n",(void*)obj_end_address);
+            // printf("marked obj : size : %lu\n", hhdr->hb_sz);
+            FILE *file = fopen(marked_bit_file_path, "a");
+
+            if (file == NULL) {
+              fprintf(stderr, "ファイル %s を開けませんでした。\n", marked_bit_file_path);
+              return;
+            }
+            fprintf(file, "sta_ad:%p\n",(void*)obj_start_address);
+            fprintf(file, "end_ad:%p\n",(void*)obj_end_address);
+            // fprintf(file, "marked size:%lu\n", hhdr->hb_sz);
+            fclose(file);
+#endif // PRINT_MARKED_OBJECT
+            // taiga added
+          //  ＝＝＝＝＝＝GC対象のアドレスをChampSimに渡す場合＝＝＝＝＝
             GC_freehblk(hbp);
           }
         } else if (GC_find_leak || !GC_block_nearly_full(hhdr, sz)) {
@@ -708,6 +775,8 @@ GC_INNER void GC_start_reclaim(GC_bool report_if_found)
   /* or enqueue the block for later processing.                            */
     // taiga added
     // const char *marked_bit_file_path = "/home/funkytaiga/tmp_champ/ChampSim-Ramulator/tmp_gc_marked_pages_files/tmp.txt";
+    static int gc_count_for_marked_page = 0; //GCの回数を記録
+    gc_count_for_marked_page++;
     FILE *file = fopen(marked_bit_file_path, "a");
     prev_gc_start = ftell(file);
 
@@ -715,7 +784,8 @@ GC_INNER void GC_start_reclaim(GC_bool report_if_found)
       fprintf(stderr, "ファイル %s を開けませんでした。\n", marked_bit_file_path);
       return;
     }
-    fprintf(file, "GC start\n");
+    fprintf(file, "%d\n", gc_count_for_marked_page);
+    fprintf(file, "GC_start\n");
     // ファイルを閉じる
     fclose(file);
     // taiga added
@@ -727,7 +797,7 @@ GC_INNER void GC_start_reclaim(GC_bool report_if_found)
       fprintf(stderr, "ファイル %s を開けませんでした。\n", marked_bit_file_path);
       return;
     }
-    fprintf(file_ver2, "GC end\n");
+    fprintf(file_ver2, "GC_end\n");
     // ファイルを閉じる
     fclose(file_ver2);
     // taiga added

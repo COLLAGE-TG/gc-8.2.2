@@ -357,27 +357,9 @@ void GC_apply_to_all_blocks(void (*fn)(struct hblk *h, word client_data),
 void GC_apply_to_all_blocks_for_reclaim_block(void (*fn)(struct hblk *h, word client_data),
                             word client_data)
 {
-    signed_word j;
-    bottom_index * index_p;
-
-    for (index_p = GC_all_bottom_indices; index_p != 0;
-         index_p = index_p -> asc_link) {
-        for (j = BOTTOM_SZ-1; j >= 0;) {
-            if (!IS_FORWARDING_ADDR_OR_NIL(index_p->index[j])) {
-                if (!HBLK_IS_FREE(index_p->index[j])) {
-                    (*fn)(((struct hblk *)
-                              (((index_p->key << LOG_BOTTOM_SZ) + (word)j)
-                               << LOG_HBLKSIZE)),
-                          client_data);
-                }
-                j--;
-             } else if (index_p->index[j] == 0) {
-                j--;
-             } else {
-                j -= (signed_word)(index_p->index[j]);
-             }
-         }
-     }
+    int dami = 0;
+    dami++;
+    GC_apply_to_all_blocks(fn, (word)client_data);
 }
 // taiga added
 
